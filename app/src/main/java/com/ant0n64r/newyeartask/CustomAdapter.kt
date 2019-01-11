@@ -14,7 +14,7 @@ import android.support.v4.content.ContextCompat.startActivity
 import android.support.v7.widget.CardView
 
 
-class CustomAdapter(val langList: ArrayList<ProgrammingLanguage>) : RecyclerView.Adapter<CustomAdapter.ViewHolder>() {
+class CustomAdapter(val langList: MutableList<ProgrammingLanguage>) : RecyclerView.Adapter<CustomAdapter.ViewHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         val v = LayoutInflater.from(parent.context).inflate(R.layout.lang_items_layout, parent, false)

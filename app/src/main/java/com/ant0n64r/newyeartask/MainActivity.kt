@@ -9,7 +9,6 @@ import android.support.v7.widget.CardView
 import android.support.v7.widget.GridLayoutManager
 import android.support.v7.widget.RecyclerView
 import android.view.View
-import android.widget.Toast
 import kotlinx.android.synthetic.main.activity_main.*
 import android.widget.AdapterView.OnItemClickListener
 
@@ -31,10 +30,7 @@ class MainActivity : AppCompatActivity() {
         val sql = BitmapFactory.decodeResource(this.getResources(), R.drawable.sql)
         val objectivec = BitmapFactory.decodeResource(this.getResources(),R.drawable.objectivec)
 
-        recycler.layoutManager = GridLayoutManager(this, 2)
-
-
-        val languaches = ArrayList<ProgrammingLanguage>()
+        val languaches = mutableListOf<ProgrammingLanguage>()
 
         languaches.add(ProgrammingLanguage("Java", "Джеймс\nГослинг", 1995, "Imperative, Structured, Functional, Object-oriented", java, 1, "https://ru.wikipedia.org/wiki/Java"))
         languaches.add(ProgrammingLanguage("C", "Деннис Ритчи,\nКен Томпсон", 1972, "Imperative, Structured, Procedural", c, 2, "https://en.wikipedia.org/wiki/C_(programming_language)"))
@@ -47,7 +43,10 @@ class MainActivity : AppCompatActivity() {
         languaches.add(ProgrammingLanguage("SQL", "Д. Чемберлин,\nР. Бойс", 1974, "Declarative", sql, 9, "https://ru.wikipedia.org/wiki/SQL"))
         languaches.add(ProgrammingLanguage("Objective C", "Бред\nКокс", 1983, "Object-oriented", objectivec, 10, "https://ru.wikipedia.org/wiki/Objective-C"))
 
-        val adapter = CustomAdapter(languaches)
+        val sortedList = languaches.sortedWith(compareBy ({ it.paradigms },{it.name}))
+
+        recycler.layoutManager = GridLayoutManager(this, 2)
+        val adapter = CustomAdapter(sortedList as MutableList<ProgrammingLanguage>)
 
         recycler.adapter = adapter
 
