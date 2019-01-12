@@ -1,3 +1,12 @@
 <resources>
     <string name="app_name">New year task</string>
+    //, Event-driven, Functional, Imperative,  Object-oriented, Procedural, Structured
+    <string name="declarative">Declarative</string>
+    <string name="eventdriven">Event-driven</string>
+    <string name="functional">Functional</string>
+    <string name="imperative">Imperative</string>
+    <string name="objectoriented">Object-oriented</string>
+    <string name="procedural">Procedural</string>
+    <string name="structured">Structured</string>
+    <string name="all">All</string>
 </resources>

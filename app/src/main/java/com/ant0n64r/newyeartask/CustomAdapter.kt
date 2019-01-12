@@ -31,7 +31,7 @@ class CustomAdapter(val langList: MutableList<ProgrammingLanguage>) : RecyclerVi
         holder.name.text = lang.name
         holder.authors.text = lang.authors
         holder.year.text = lang.year.toString()
-        holder.paradigms.text = lang.paradigms
+        holder.paradigms.text = lang.paradigms.toString()
         holder.logo.setImageBitmap(lang.logo)
         holder.indexTIOBE.text = lang.indexTIOBE.toString()
         holder.constr.setOnClickListener {

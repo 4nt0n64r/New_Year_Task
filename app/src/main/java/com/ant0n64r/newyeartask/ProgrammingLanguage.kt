@@ -6,8 +6,9 @@ data class ProgrammingLanguage(
     val name:String,
     val authors:String,
     val year:Int,
-    val paradigms:String,
+    var paradigms:List<String>,
     val logo:Bitmap,
     val indexTIOBE:Int,
     val link:String) {
+
 }
