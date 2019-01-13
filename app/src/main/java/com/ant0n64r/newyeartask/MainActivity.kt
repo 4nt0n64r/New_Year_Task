@@ -41,27 +41,17 @@ class MainActivity : AppCompatActivity() {
             languages.add(ProgrammingLanguage("Objective C", "Бред\nКокс", 1983, listOf<String>(getString(R.string.objectoriented)), objectivec, 10, "https://ru.wikipedia.org/wiki/Objective-C"))
         }
 
-
         fillAll(languages)
 
         recycler.layoutManager = GridLayoutManager(this, 2)
+
         var adapter = CustomAdapter(languages)
         recycler.adapter = adapter
 
         //функция добавляет onClickListener для определенной кнопки и фильтрует элементы recycler'а по заданной строке
         fun onClickSetter(but:Button,currString:String){
             but.setOnClickListener {
-                languages.clear()
-                fillAll(languages)
-                val sortString = currString
-                val langSorted = mutableListOf<ProgrammingLanguage>()
-                for (lang in languages){
-                    for (paradigm in lang.paradigms){
-                        if (paradigm == sortString){
-                            langSorted.add(lang)
-                        }
-                    }
-                }
+                val langSorted: List<ProgrammingLanguage> = languages.filter { s -> currString in s.paradigms }
                 adapter = CustomAdapter(langSorted)
                 recycler.adapter = adapter
             }
@@ -76,14 +66,9 @@ class MainActivity : AppCompatActivity() {
         onClickSetter(structuredSortBut,getString(R.string.structured))
 
         allSortBut.setOnClickListener {
-            languages.clear()
-            fillAll(languages)
             adapter = CustomAdapter(languages)
             recycler.adapter = adapter
         }
 
     }
-
-
-
 }
