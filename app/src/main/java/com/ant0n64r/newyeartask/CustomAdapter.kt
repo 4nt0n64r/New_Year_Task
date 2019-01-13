@@ -35,7 +35,10 @@ class CustomAdapter(val langList: List<ProgrammingLanguage>) : RecyclerView.Adap
         holder.logo.setImageBitmap(lang.logo)
         holder.indexTIOBE.text = lang.indexTIOBE.toString()
         holder.constr.setOnClickListener {
-            Utils.startActivity(holder.card.context,WebActivity::class.java,lang.link)
+            val intent = Intent(holder.card.context,WebActivity::class.java)
+            intent.putExtra("LINK",lang.link)
+            val context:Context = holder.card.context
+            context.startActivity(intent)
         }
     }
 
@@ -50,20 +53,4 @@ class CustomAdapter(val langList: List<ProgrammingLanguage>) : RecyclerView.Adap
         val constr = itemView.findViewById(R.id.constr) as ConstraintLayout
     }
 
-    class Utils {
-
-        companion object {
-            fun startActivity(context: Context, clazz: Class<*>,extra:String) {
-
-                val intent = Intent(context, clazz)
-
-                intent.putExtra("LINK",extra)
-                // start your next activity
-
-                context.startActivity(intent)
-
-            }
-        }
-
-    }
 }
